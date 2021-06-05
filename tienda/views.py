@@ -1,10 +1,14 @@
 from django.shortcuts import render
+from .models import Producto
 
 # Create your views here.
 
 def home(request):
-    context = {"choclo":"palta"}
-    return render(request,'tienda/index.html',context)
+    listaproducto = Producto.objects.all()
+    datos = {
+        'producto':listaproducto
+    }
+    return render(request,'tienda/index.html',datos)
 
 def galeria(request):
     context = {"choclo":"palta"}
