@@ -18,7 +18,7 @@ class Producto(models.Model):
    precio = models.PositiveIntegerField(validators=[MaxValueValidator(99999999)], verbose_name='Precio')
    stock = models.PositiveIntegerField(validators=[MaxValueValidator(99999)], null=True,verbose_name='Stock')
    talla = models.CharField(max_length=4, null=True,verbose_name='Talla')
-#  imagen = models.ImageField(null=True, blank=True, upload_to="image/")
+#  imagen = models.ImageField(null=True, blank=True, upload_to="tienda/img/")
    catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE,verbose_name='Nombre de la categoria')
     
    def __str__(self):
@@ -26,7 +26,7 @@ class Producto(models.Model):
 
 # Modelo Comprador-Pedido-Producto.
 class Comprador(models.Model):
-#(\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8} # ^(\+?56)?(\s?)(0?9)(\s?)[9876543]\d{7}$')
+
     rut = models.CharField(primary_key=True, max_length=10, validators=[RegexValidator(r'^[0-9]+-[0-9kK]{1}$')], verbose_name='Rut del Comprador')
     nombre = models.CharField(max_length=35, verbose_name='Nombre')
     apellido = models.CharField(max_length=35, verbose_name='Apellido')
