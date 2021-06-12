@@ -64,20 +64,19 @@
         </div>
         <div class="col-lg-1 col-md-1 col-sm-1"></div>
         <div class="descripcion col-lg-6 col-md-6 col-sm-12">
+            {% for pro in producto %}
             <div class="col">
-                <h4 class="display-5">Camisa manga larga hombre</h4>
+                <h4 class="display-5">{{pro.nombreProducto}}</h4>
                 <br>
-                <h1>5900 CLP$</h1>
+                <h1>{{pro.precio}} CLP$</h1>
             </div>
             <br>
             <div class="row mt-md-5">
                 <div class="col-9">
                     <p>Talla</p>
                     <select class="form-select" aria-label=".form-select">
-                        <option selected>S</option>
-                        <option value="1">M</option>
-                        <option value="2">L</option>
-                        <option value="3">XL</option>
+                        <option selected></option>
+                        <option value="1">{{pro.talla}}</option>
                       </select>
                 </div>
                 <div class="col-3">
@@ -87,9 +86,10 @@
             </div>
             <br>
             <div class="row px-3 mt-md-5 ">
-                <span class="badge bg-success col-2">Stock</span>
+                <span class="badge bg-success col-2">Stock : {{pro.stock}}</span>
                 <button type="button" class="btn btn-dark justify-content-center"><h5>AÑADIR AL CARRO</h5></button>
             </div>
+            {% endfor %}
 
         </div>
     </div>

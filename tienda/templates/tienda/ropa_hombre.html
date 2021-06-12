@@ -65,16 +65,16 @@
                 <div class="row ">
                     <div class="row btn-group text-center" role="group">
                         <div class="col-sm-6 col-md-3 ">
-                            <a href="{% url 'galeria' %}"><button type="button" class="botonMenuRopa btn btn-dark">Ropa Hombre</button></a>
+                            <a href="{% url 'home' %}"><button type="button" class="botonMenuRopa btn btn-dark">Ropa Hombre</button></a>
                         </div>
                         <div class="col-sm-6 col-md-3 ">
-                            <a href="{% url 'galeria' %}"><button type="button" class="botonMenuRopa btn btn-dark">Ropa Mujer</button></a>
+                            <a href="{% url 'home' %}"><button type="button" class="botonMenuRopa btn btn-dark">Ropa Mujer</button></a>
                         </div>
                         <div class="col-sm-6 col-md-3 ">
-                            <a href="{% url 'galeria' %}"><button type="button" class="botonMenuRopa btn btn-dark">Accesorios</button></a>
+                            <a href="{% url 'home' %}"><button type="button" class="botonMenuRopa btn btn-dark">Accesorios</button></a>
                         </div>
-                        <div class="col-sm-6 col-md-3 ">
-                            <a href="{% url 'galeria' %}"><button type="button" class="botonMenuRopa btn btn-dark">Bolsos</button></a>
+                        <div class="col-sm-6 col#-md-3 ">
+                            <a href="{% url 'home' %}"><button type="button" class="botonMenuRopa btn btn-dark">Bolsos</button></a>
                         </div>
                     </div>
                 </div>
@@ -93,62 +93,15 @@
             <!-- Galeria -->
             <div class="container-fluid galeria">
                 <div class="row text-center">
+                    {% for pro in producto %}
                     <div class="img-galeria  col-sm-6 col-md-3">
-                        <a class="linkGaleria" href="{% url 'producto' %}">
+                        <a class="linkGaleria" href="{% url 'producto' pro.id_Producto %}">
                             <img src="{% static 'tienda/img/hombre1.jpg' %}" class="img-fluid img-thumbnail" alt=" ">
-                            <h5>Camisa manga larga</h5>
-                            <h6>Precio = $ 5.900</h6>
+                            <h5>{{pro.nombreProducto}}</h5>
+                            <h6>Precio = $ {{pro.precio}}</h6>
                         </a>
                     </div>
-                    <div class="img-galeria col-sm-6 col-md-3">
-                        <a class="linkGaleria" href="{% url 'producto' %}">
-                            <img src="{% static 'tienda/img/hombre2.jpg' %}" class="img-fluid img-thumbnail " alt=" ">
-                            <h5>Poleron negro</h5>
-                            <h6>Precio = $ 7.900</h6>
-                        </a>
-                    </div>
-                    <div class="img-galeria col-sm-6 col-md-3">
-                        <a class="linkGaleria" href="{% url 'producto' %}">
-                            <img src="{% static 'tienda/img/hombre3.jpg' %}" class="img-fluid img-thumbnail " alt=" ">
-                            <h5>Polera negra</h5>
-                            <h6>Precio = $ 4.900</h6>
-                        </a>
-                    </div>
-                    <div class="img-galeria col-sm-6 col-md-3">
-                        <a class="linkGaleria" href="{% url 'producto' %}">
-                            <img src="{% static 'tienda/img/hombre4.jpg' %}" class="img-fluid img-thumbnail " alt=" ">
-                            <h5>Chaleco negro</h5>
-                            <h6>Precio = $ 7.900</h6>
-                        </a>
-                    </div>
-                    <div class="img-galeria col-sm-6 col-md-3">
-                        <a class="linkGaleria" href="{% url 'producto' %}">
-                            <img src="{% static 'tienda/img/hombre1.jpg' %}" class="img-fluid img-thumbnail " alt=" ">
-                            <h5>Camisa manga larga</h5>
-                            <h6>Precio = $ 5.900</h6>
-                        </a>
-                    </div>
-                    <div class="img-galeria col-sm-6 col-md-3">
-                        <a class="linkGaleria" href="{% url 'producto' %}">
-                            <img src="{% static 'tienda/img/hombre2.jpg' %}" class="img-fluid img-thumbnail " alt=" ">
-                            <h5>Poleron negro</h5>
-                            <h6>Precio = $ 7.900</h6>
-                        </a>
-                    </div>
-                    <div class="img-galeria col-sm-6 col-md-3">
-                        <a class="linkGaleria" href="{% url 'producto' %}">
-                            <img src="{% static 'tienda/img/hombre3.jpg' %}" class="img-fluid img-thumbnail " alt=" ">
-                            <h5>Polera negra</h5>
-                            <h6>Precio = $ 4.900</h6>
-                        </a>
-                    </div>
-                    <div class="img-galeria col-sm-6 col-md-3">
-                        <a class="linkGaleria" href="{% url 'producto' %}">
-                            <img src="{% static 'tienda/img/hombre4.jpg' %}" class="img-fluid img-thumbnail " alt=" ">
-                            <h5>Chaleco negro</h5>
-                            <h6>Precio = $ 7.900</h6>
-                        </a>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </section>

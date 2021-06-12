@@ -18,7 +18,6 @@ class Producto(models.Model):
    precio = models.PositiveIntegerField(validators=[MaxValueValidator(99999999)], verbose_name='Precio')
    stock = models.PositiveIntegerField(validators=[MaxValueValidator(99999)], null=True,verbose_name='Stock')
    talla = models.CharField(max_length=4, null=True,verbose_name='Talla')
-#  imagen = models.ImageField(null=True, blank=True, upload_to="tienda/img/")
    catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE,verbose_name='Nombre de la categoria')
     
    def __str__(self):

@@ -1,20 +1,35 @@
 from django.shortcuts import render, redirect
-from .models import Producto
+from .models import Producto, Catalogo
 from .forms import ProductoForm
 
 # Create your views here.
 
 def home(request):
-    context = {"choclo":"palta"}
-    return render(request,'tienda/index.html',context)
+    listaCatalogo = Catalogo.objects.all()
+    datos = {
+        'Catalogo':listaCatalogo
+    }
+    return render(request,'tienda/index.html',datos)
 
-def galeria(request):
-    context = {"choclo":"palta"}
-    return render(request,'tienda/ropa_hombre.html',context)
+def galeria(request, id):
+    listaCatalogo = Catalogo.objects.all()
+    catalogos = Catalogo.objects.get(id_Catalogo=id)
+    listaproducto = Producto.objects.filter(catalogo=id)
+    datos = {
+        'galeria':catalogos,
+        'producto':listaproducto,
+        'Catalogo':listaCatalogo
+    }
+    return render(request,'tienda/ropa_hombre.html',datos)
 
-def producto(request):
-    context = {"choclo":"palta"}
-    return render(request,'tienda/hombre1.html',context)
+def producto(request, id):
+    producto = Producto.objects.get(id_Producto=id)
+    listaproducto = Producto.objects.filter(id_Producto=id)
+    datos = {
+        'prod':producto,
+        'producto':listaproducto
+    }
+    return render(request,'tienda/hombre1.html',datos)
 
 def carro(request):
     context = {"choclo":"palta"}

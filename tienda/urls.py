@@ -9,8 +9,8 @@ from .views import form_producto, form_mod_producto, form_del_producto
 
 urlpatterns = [
     path('',home,name="home"),
-    path('galeria/',galeria,name="galeria"),
-    path('producto/',producto,name="producto"),
+    path('galeria/<id>',galeria,name="galeria"),
+    path('producto/<id>',producto,name="producto"),
     path('carro/',carro,name="carro"),
     path('contacto/',contacto,name="contacto"),
     path('lista/',listado,name="lista"),
