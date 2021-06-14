@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #fff;
+    font-family: fantasy;
+}
+
+
+/* cabeza */
+
+.cabeza {
+    background-color: #ffffff;
+    text-align: center;
+    margin-top: 2em;
+}
+
+.division {
+    background-color: #000000;
+    color: #000000;
+    height: 2em;
+    width: auto;
+}
+
+#error {
+    height: 20%;
+    width: 20%;
+}
+
+.volver {
+    height: 2em;
+    width: 1px;
+}
