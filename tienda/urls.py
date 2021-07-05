@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import home
 from .views import galeria
 from .views import producto
@@ -26,4 +26,5 @@ urlpatterns = [
     path('form_catalogo/',form_catalogo,name="form_catalogo"),
     path('form_mod_catalogo/<id>',form_mod_catalogo,name="form_mod_catalogo"),
     path('form_del_catalogo/<id>',form_del_catalogo,name="form_del_catalogo"),
+    path('api/',include('rest_producto.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
