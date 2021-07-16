@@ -104,6 +104,23 @@
                     {% endfor %}
                 </div>
             </div>
+
+            <!-- Galeria Oferta -->
+            <div class="container-fluid galeria">
+                <div class="row text-center">
+                    {% for ofe in oferta %}
+                    <div class="img-galeria  col-sm-6 col-md-3">
+                        <a class="linkGaleria" href="{% url 'oferta' ofe.id_Oferta %}">
+                            <img src="{{ ofe.imgProducto.url }}" class="img-fluid img-thumbnail" alt=" ">
+                            <h5>{{ofe.nombreProducto}}</h5>
+                            <h6>Precio Normal = $ {{ofe.precio}}</h6>
+                            <h6>Descuento = {{ofe.descuento}}% </h6>
+                            <h6>Precio con descuento = $ {{ofe.precioDescuento}}</h6>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </section>
         <!-- pie -->
         <footer class="row pie ">

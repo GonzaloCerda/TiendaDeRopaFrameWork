@@ -30,7 +30,7 @@ def oferta(request, id):
     datos = {
         'oferta':listaoferta
     }
-    return render(request,'tienda/hombre1.html',datos)
+    return render(request,'tienda/ropa_hombre.html',datos)
 
 def carro(request):
     context = {"choclo":"palta"}
@@ -144,7 +144,7 @@ def form_oferta(request):
         formulario = OfertaForm(request.POST)
         if formulario.is_valid():
             formulario.save()
-            datos['mensaje'] = 'Guardado correctamente'
+            datos['mensaje'] = 'Guardado correctamente'            
     return render(request,'tienda/form_oferta.html',datos)
 
 def form_mod_oferta(request, id):
