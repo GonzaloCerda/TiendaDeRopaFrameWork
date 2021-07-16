@@ -26,7 +26,7 @@
         <form method="post" action="" id="formulario" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form_group mx-5 alert-dark">
-                {{ form.media }}
+                {{ form.media}}
                 <div class="row col-6 mb-3 mx-5">
                     <label class="form-label" for="id_nombreProducto">Nombre del Producto:</label>
                     <input class="form-control" id="id_nombreProducto" type="text" name="nombreProducto" required>
