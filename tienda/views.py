@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Producto, Catalogo
-from .forms import ProductoForm, CatalogoForm
+from .models import Producto, Catalogo, Oferta
+from .forms import  ProductoForm, CatalogoForm, OfertaForm
 
 # Create your views here.
 
@@ -24,6 +24,13 @@ def producto(request, id):
         'producto':listaproducto
     }
     return render(request,'tienda/hombre1.html',datos)
+
+def oferta(request, id):
+    listaoferta = Oferta.objects.filter(id_Oferta=id)
+    datos = {
+        'oferta':listaoferta
+    }
+    return render(request,'tienda/oferta1.html',datos)
 
 def carro(request):
     context = {"choclo":"palta"}
@@ -118,3 +125,45 @@ def form_del_catalogo(request, id):
     catalogo.delete()
 
     return redirect(to='listacatalogo')
+
+###############Ofertas######################
+
+def listadoOferta(request):
+    listaoferta = Oferta.objects.all()
+    datos = {
+        'oferta':listaoferta
+    }
+    return render(request,'tienda/listaoferta.html',datos)
+
+def form_oferta(request):
+    datos = {
+        'form':OfertaForm()
+    }
+
+    if(request.method == 'POST'):
+        formulario = OfertaForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = 'Guardados correctamente'
+    return render(request,'tienda/form_oferta.html',datos)
+
+def form_mod_oferta(request, id):
+    oferta = Oferta.objects.get(id_Oferta=id)
+
+    datos = {
+        'form':OfertaForm(instance=oferta)
+    }
+
+    if(request.method == 'POST'):
+        formulario = OfertaForm(data=request.POST, instance=oferta)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = 'Modificados correctamente'
+        
+    return render(request, 'tienda/form_mod_oferta.html',datos)
+
+def form_de_la_oferta(request, id):
+    oferta = Oferta.objects.get(id_Oferta=id)
+    oferta.delete()
+
+    return redirect(to='listaoferta')

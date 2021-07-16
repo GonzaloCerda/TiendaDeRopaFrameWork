@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# Modelo Catalogo-Producto-Pedido.
+# Modelo Catalogo-Producto-Oferta-Pedido.
 
 default_image = 'tienda/static/tienda/img/no_img.jpg'
 
@@ -61,6 +61,19 @@ class detallePedido(models.Model):
     def __int__(self):
         return self.id_detallePedido
  
- 
+class Oferta(models.Model):
+      
+   id_Oferta = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID de la oferta')
+   nombreProducto = models.CharField(max_length=50, verbose_name='Nombre del Producto')
+   precio = models.IntegerField(verbose_name='Precio')
+   descuento = models.IntegerField(verbose_name='Descuento')
+   precioDescuento = models.IntegerField(verbose_name='Precio con Descuento')
+   stock = models.IntegerField(null=True,verbose_name='Stock')
+   talla = models.CharField(max_length=4, null=True,verbose_name='Talla')
+   imgProducto = models.ImageField(null=True, blank=True, upload_to="media/producto", default=default_image)
+   catalogo = models.ForeignKey(Catalogo, on_delete=models.CASCADE,verbose_name='Nombre de la categoria')
+  
+   def __str__(self):
+        return self.nombreProducto
 
 
